@@ -32,4 +32,4 @@ yarn-error.log*
 .vercel
 
 .sass-cache/
-**.css.map
+*.css.map
