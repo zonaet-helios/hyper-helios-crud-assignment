@@ -5,6 +5,7 @@ import { updateContact } from '../../redux/slices/contactsSlice';
 import styles from '../../styles/mySass.module.scss';
 
 const EditContact = () => {
+     // router
     const router=useRouter();
     const {id}=router.query;
 
