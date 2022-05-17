@@ -5,24 +5,29 @@ import { updateContact } from '../../redux/slices/contactsSlice';
 import styles from '../../styles/mySass.module.scss';
 
 const EditContact = () => {
-     // router
-    const router=useRouter();
-    const {id}=router.query;
+          // router
+     const router=useRouter();
+     const {id}=router.query;
 
-    const contact=useSelector(state=>state.contacts.find(s => s.id ===id));
+     const contact=useSelector(state=>state.contacts.find(s => s.id ===id));
 
-    // state form data
-    const [formData,setFormData]=useState({name:contact.name,number:contact.number});
-    const [error,setError]=useState('');
+     // state form data
+     const [formData,setFormData]=useState({name:contact.name,number:contact.number});
+     const [error,setError]=useState('');
     
-    // handle change
-    const handleChange=(e)=>{
-        const field=e.target.name;
-        const value=e.target.value;
-        const newValue={...formData};
-        newValue[field]=value;
-        setFormData(newValue);
-    }
+     // handle change
+    /*  const handleChange=(e)=>{
+          const field=e.target.name;
+          const value=e.target.value;
+          const newValue={...formData};
+          newValue[field]=value;
+          setFormData(newValue);
+     }; */
+
+     const handleChange=(e)=>{
+          const {name,value}=e.target;
+          setFormData({...formData,[name]:value});
+     }
 
 
     const dispatch=useDispatch();

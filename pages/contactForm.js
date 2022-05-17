@@ -13,24 +13,14 @@ const contactForm = () => {
     const dispatch = useDispatch();
     const contacts=useSelector(state=>state.contacts);
 
-    // handle change
-   /*  const handleChange=(e)=>{
-        const field=e.target.name;
-        const value=e.target.value;
-        const newValue={...formData};
-        newValue[field]=value;
-        console.log(newValue);
-        setFormData(newValue);
+     //   handleChange  
+     const handleChange=(e)=>{
+          const {name,value}=e.target;
+          setFormData({...formData,[name]:value})
+     }
 
-    } */
-    const handleChange=(e)=>{
-         const field=e.target.name;
-         const value=e.target.value;
-         setFormData([field]=value);
-    }
-
-    // handle submit
-    const handleSubmit=(e)=>{
+     // handle submit
+     const handleSubmit=(e)=>{
         e.preventDefault();
 
         const regex=/^([01]|\+88)?\d{11}/;          
@@ -55,7 +45,7 @@ const contactForm = () => {
         // setNumber('');
         // setFormErrors('')
         setFormData('');
-    };
+     };
 
 
   return (
