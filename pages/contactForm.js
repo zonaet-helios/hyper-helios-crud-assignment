@@ -14,7 +14,7 @@ const contactForm = () => {
     const contacts=useSelector(state=>state.contacts);
 
     // handle change
-    const handleChange=(e)=>{
+   /*  const handleChange=(e)=>{
         const field=e.target.name;
         const value=e.target.value;
         const newValue={...formData};
@@ -22,6 +22,11 @@ const contactForm = () => {
         console.log(newValue);
         setFormData(newValue);
 
+    } */
+    const handleChange=(e)=>{
+         const field=e.target.name;
+         const value=e.target.value;
+         setFormData([field]=value);
     }
 
     // handle submit
