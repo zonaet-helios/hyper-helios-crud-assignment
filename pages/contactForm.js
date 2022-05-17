@@ -3,6 +3,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { addContact } from '../redux/slices/contactsSlice';
 import { nanoid } from '@reduxjs/toolkit'
 import styles from '../styles/mySass.module.scss';
+import Header from '../components/Contact/Header/Header';
 
 const contactForm = () => {
     const [formData,setFormData]=useState({});
@@ -54,6 +55,7 @@ const contactForm = () => {
 
   return (
     <div>
+         <Header></Header>
         <div className={styles.container}>
                <div class={styles.formContainer}>
                     <form className={styles.form} onSubmit={handleSubmit}>

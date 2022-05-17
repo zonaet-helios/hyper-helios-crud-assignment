@@ -6,20 +6,19 @@ import { useRouter } from 'next/router'
 
 
 const SingleContact = () => {
-     // useParams
-
+     // useRouter
      const router=useRouter();
      const {id}=router.query;
      console.log(id)
 
      // selector
      const contact=useSelector(state=>state.contacts.find(s => s.id ===id));
-     console.log(contactId)
+     console.log(contact)
 
-
+     // editpage go handle
      const goEdit=()=>{
           const url=`/editContact/${contact.id}`;
-          navigate(url);
+          router.push(url);
      };
 
      
