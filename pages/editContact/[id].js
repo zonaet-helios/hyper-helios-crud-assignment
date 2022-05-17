@@ -74,7 +74,7 @@ const EditContact = () => {
                          />
                          <br />
                          {error&&<h3>this is error</h3>}
-                         <button type='submit' className='button'>Submit</button>
+                         <button type='submit' className={styles.button}>Submit</button>
                     </form>
                </div>
           </div>

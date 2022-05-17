@@ -9,8 +9,8 @@ const Header = () => {
     <div className={styles.navContainer}>
       <div className={styles.subNavContainer}>
         <h3>Contact App</h3>
-        <Link href='/contactForm' className={styles.link}><a>contact-form</a></Link>
-        <Link href='/contactData' className={styles.link}><a>Added-Contacts</a></Link>
+        <Link href='/contactForm' ><a className={styles.link}>contact-form</a></Link>
+        <Link href='/contactData' ><a className={styles.link}>Added-Contacts</a></Link>
       </div>
                
     </div>
