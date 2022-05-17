@@ -12,15 +12,15 @@ const contactsSlice = createSlice({
                return state.filter(s=>s.id!==action.payload);
                
           },
-          updateContact:(state,action)=>{
-               const { id, name, number } = action.payload;
-               const existingContact = state.find((s) => s.id === id);
-               if (existingContact) {
-                    existingContact.name = name
-                    existingContact.number = number
-               }
-          }
+          // updateContact:(state,action)=>{
+          //      const { id, name, number } = action.payload;
+          //      const existingContact = state.find((s) => s.id === id);
+          //      if (existingContact) {
+          //           existingContact.name = name
+          //           existingContact.number = number
+          //      }
+          // }
      }
    })
-   export const { addContact,updateContact,deleteContact } = contactsSlice.actions;
+   export const { addContact,deleteContact } = contactsSlice.actions;
    export default contactsSlice.reducer;

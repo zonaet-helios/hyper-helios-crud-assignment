@@ -1,16 +1,19 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import styles from '../styles/mySass.module.scss';
+import { useRouter } from 'next/router'
+
 
 
 const SingleContact = () => {
      // useParams
-     const {contactId}=useParams();
-     const navigate=useNavigate();
+
+     const router=useRouter();
+     const {id}=router.query;
+     console.log(id)
 
      // selector
-     const contact=useSelector(state=>state.contacts.find(s => s.id ===contactId));
+     const contact=useSelector(state=>state.contacts.find(s => s.id ===id));
      console.log(contactId)
 
 
