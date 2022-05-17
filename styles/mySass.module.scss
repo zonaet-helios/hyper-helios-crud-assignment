@@ -1,0 +1,191 @@
+// import font family
+// @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins&display=swap');
+
+// variable
+/* color variable declaration */
+$pageBgColor:rgb(191, 239, 240);
+$navBarBg:rgb(0, 0, 0);
+$navBarText:white;
+$linkColor:rgb(220, 217, 231);
+$buttonBg: black;
+$buttonColor: white;
+
+/* sizing variable */
+$fontSizeNav:3vw;
+$fontSizeHeading:2vw;
+$fontSizeLink: 2vw;
+$fontSizeButton: 2vw;
+
+$fontColorH: rgb(241, 235, 235);
+$fontWightH: bold;
+
+
+/* font family variable declaration */
+// $fontFamily:'Lato', sans-serif;
+
+
+/* margin variable declaration */
+
+
+
+
+
+// -----------------------------------------
+// body
+
+
+// ------------------------------------------
+// common
+// link
+.link{
+     color: $linkColor;
+     text-decoration: none;
+    //  font-family: $fontFamily;
+     font-size: $fontSizeLink;
+     padding: 2vw 3vw;
+}
+// button
+.button{
+     background-color: $buttonBg;
+     color: $buttonColor;
+     font-size: $fontSizeButton;
+     padding: 3% 2%;
+     margin: 3% 2%;
+     border: 1px solid blue;
+     border-radius: 4px;
+     text-align: center;
+     display: inline-block;
+     cursor: pointer;
+}
+// navbar 
+.navContainer{
+     width: 100%;
+     background-color: $navBarBg;
+     color: $navBarText;
+
+     .subNavContainer{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 2vw 3vw;
+
+     h3{
+          font-size: $fontSizeNav;          
+     }
+}
+}
+
+// ---------------------------------------------
+// form base page design
+.container{
+     box-sizing: content-box;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     
+     width: 100%;
+     height: 100%;
+     margin: 3%;
+}
+
+.formContainer{
+     background-color: $pageBgColor;
+     width: 50%;
+     text-align: center;
+     padding-top: 5vw;
+}
+
+.form{
+     height: 75%;
+     box-shadow: 10px 10px 5px #aaaaaa;
+     padding: 3%;
+
+     input[type] {
+          width: 75%;
+          padding: 3%;
+          margin: 3%;
+          border: 1px solid rgb(203, 197, 197);
+          border-radius: 4px;
+          resize: vertical;  
+     }
+}
+
+// -----------------------------------
+// contact data page
+.contactContainer{
+     box-sizing: border-box;
+     margin: 5vw;
+}
+.allContactContainer{
+     display: grid;
+     grid-template-columns: repeat(4,1fr);
+     grid-gap: 2vw;
+     
+}
+
+.singleContact{
+     background-color: cornflowerblue;
+     text-align: center;
+     padding: 2vw;
+     margin: 1vw;
+     border-radius: 5px;
+     box-shadow: 10px 10px 5px #aaaaaa;
+
+     h3 h5{
+          font-size: $fontSizeHeading;
+          font-weight:$fontWightH ;
+          color: $fontColorH;
+          padding: 2vw;
+          margin: 2vw;
+     }
+     
+}
+
+// -------------------------------------------
+// single contact details page
+.contactDetails{
+     box-sizing: border-box;
+     display: flex;
+     justify-content: center;
+     align-items: center; 
+     text-align: center;
+     
+     text-align: center;
+
+     h2{
+          font-size: 3vw;
+          font-weight: bolder;
+          color: rgb(22, 17, 17);
+          margin: 3vw;
+     }
+
+    
+}
+
+// --------------------------------------
+// media query responsive
+
+$breakpoint-tablet: 768px;
+$breakpoint-mobile:480px;
+
+@media (min-width: $breakpoint-tablet) {
+     .allContactContainer{
+          display: grid;
+          grid-template-columns: repeat(4,1fr);
+          grid-gap: 2vw;
+          
+     }
+}
+@media (max-width: $breakpoint-mobile) {
+     .subNavContainer{
+          display: flex;
+          flex-direction: column;
+     }
+     .allContactContainer{
+          display: grid;
+          grid-template-columns: repeat(1,1fr);
+          grid-gap: 2vw;
+          
+     }
+}
+
