@@ -25,8 +25,8 @@ const EditContact = () => {
      }; */
 
      const handleChange=(e)=>{
-          const {name,value}=e.target;
-          setFormData({...formData,[name]:value});
+          // const {name,value}=e.target;
+          setFormData({...formData,[e.target.name]:e.target.value});
      }
 
 
@@ -88,3 +88,6 @@ const EditContact = () => {
 }
 
 export default EditContact;
+
+
+
