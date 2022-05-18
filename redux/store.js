@@ -3,17 +3,14 @@ import contactsSlice from '../redux/slices/contactsSlice'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { combineReducers } from 'redux';
+import rootReducers from './combineReducer';
 
 const persistConfig = {
      key: 'root',
      storage,
 };
 
-const reducers = combineReducers({
-     contacts:contactsSlice           
-});
-
-const persistedReducer = persistReducer(persistConfig, reducers);
+const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 
 export const store=configureStore({
