@@ -8,6 +8,7 @@ import Header from '../components/Contact/Header/Header';
 const contactForm = () => {
     const [formData,setFormData]=useState({});
     const [error, setError] = useState('');
+    
 
     // redux dispatch
     const dispatch = useDispatch();
@@ -16,34 +17,40 @@ const contactForm = () => {
      //   handleChange  
      const handleChange=(e)=>{
           setFormData({...formData,[e.target.name]:e.target.value})
+          setError('')
      }
 
      // handle submit
      const handleSubmit=(e)=>{
-        e.preventDefault();
+          e.preventDefault();
 
-        const regex=/^([01]|\+88)?\d{11}/;          
-        if(regex.test(formData.number)){
-             if(formData.name&&formData.number){
-                  dispatch(addContact({
-                       id: nanoid(),
-                       name:formData.name,
-                       number:formData.number})
-                  );
-             };
-        }
-        else if(!regex.test(formData.number) && formData.number !== ""){
-             setError('number is not valid')
+          const regex=/(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/;          
+          if(regex.test(formData.number)===true){
+               if(formData.name&&formData.number){
+                    dispatch(addContact({
+                         id: nanoid(),
+                         name:formData.name,
+                         number:formData.number})
+                    );
+               };
+               setFormData({
+                    name:'',
+                    number:''
+               });
+               setError('');
+          } else{
+               setError('number is not valid');
+          }
+          /* else if(!regex.test(formData.number) && formData.number !== ""){
+               setError('number is not valid')
 
-        }else{
-             
+          }else{
+               
 
-        }
+          } */
+          
 
-        // setName('');
-        // setNumber('');
-        // setFormErrors('')
-        setFormData('');
+        
      };
 
 
@@ -73,8 +80,9 @@ const contactForm = () => {
                               /* pattern = "^(?:\\+88|88)?(01[3-9]\\d{8})$" */
                               required
                          />
-                         {error&&<h4>this is not valid number</h4>}
                          <br />
+                         {/* error message */}
+                         {error&&<h4>this is not valid number</h4>}
                          <button type='submit' className={styles.button}>Add Contact</button>
                     </form>
                     {contacts.length} 
