@@ -16,7 +16,7 @@ const contactForm = () => {
 
      //   handleChange  
      const handleChange=(e)=>{
-          setFormData({...formData,[e.target.name]:e.target.value})
+          setFormData({...formData,[e.target.name]:e.target.value});
           setError('')
      }
 
@@ -24,7 +24,7 @@ const contactForm = () => {
      const handleSubmit=(e)=>{
           e.preventDefault();
 
-          const regex=/(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/;          
+          const regex=/^(?:\+88|88)?(01[3-9]\d{8})$/               
           if(regex.test(formData.number)===true){
                if(formData.name&&formData.number){
                     dispatch(addContact({
@@ -32,6 +32,7 @@ const contactForm = () => {
                          name:formData.name,
                          number:formData.number})
                     );
+                  
                };
                setFormData({
                     name:'',
@@ -81,7 +82,7 @@ const contactForm = () => {
                               required
                          />
                          <br />
-                         {/* error message */}
+                         {/* error */}
                          {error&&<h4>this is not valid number</h4>}
                          <button type='submit' className={styles.button}>Add Contact</button>
                     </form>

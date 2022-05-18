@@ -5,10 +5,12 @@ import { updateContact } from '../../redux/slices/contactsSlice';
 import styles from '../../styles/mySass.module.scss';
 
 const EditContact = () => {
-          // router
+     // router
      const router=useRouter();
      const {id}=router.query;
 
+     // redux dispatch and selector
+     const dispatch=useDispatch();
      const contact=useSelector(state=>state.contacts.find(s => s.id ===id));
 
      // state form data
@@ -16,42 +18,42 @@ const EditContact = () => {
      const [error,setError]=useState('');
     
      // handle change
-    /*  const handleChange=(e)=>{
-          const field=e.target.name;
-          const value=e.target.value;
-          const newValue={...formData};
-          newValue[field]=value;
-          setFormData(newValue);
-     }; */
-
      const handleChange=(e)=>{
-          // const {name,value}=e.target;
           setFormData({...formData,[e.target.name]:e.target.value});
+          setError('');
+
      }
 
+     // handle update 
+     const handleUpdate=(e)=>{
+          e.preventDefault();
 
-    const dispatch=useDispatch();
+          const regex=/^(?:\+88|88)?(01[3-9]\d{8})$/          
+          if(regex.test(formData.number)===true){
+               if(formData.name&&formData.number){
+                    dispatch(
+                         updateContact({
+                              id:id,
+                              name:formData.name,
+                              number:formData.number
+                         })
+                    );
+                  
+               };
+               setFormData({
+                    name:'',
+                    number:''
+               });
+               setError('');
+               router.push('/contactData');
+          } else{
+               setError('number is not valid');
+          }
+     };
 
 
-    // handle contact update
-    const handleUpdate=(e)=>{
-    e.preventDefault();
-    if(formData.name&&formData.number){
-          dispatch(
-              updateContact({
-                    id:id,
-                    name:formData.name,
-                    number:formData.number
-              })
-          );
-    }
-    
-    router.push('/contactData');
-  };
-
-
-  return (
-    <div className={styles.container}>
+     return (
+          <div className={styles.container}>
              
                <div className={styles.formContainer}>
                     <div>
@@ -83,7 +85,7 @@ const EditContact = () => {
                          <button type='submit' className={styles.button}>Submit</button>
                     </form>
                </div>
-          </div>
+     </div>
   )
 }
 
